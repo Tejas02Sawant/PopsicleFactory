@@ -7,11 +7,11 @@ All our Popsicle Web Api's are securly authenticated & authorised to access by d
 
 Username | Password | Role
 
-* ryan  || Ryan@12345  || Admin *
-* bob   || Bob@12345   || Admin *
-* jim   || Jim@12345   || Technician *
-* ryan  || Ryan@12345  || Technician *
-* katie || katie@12345 || Technician *
+* ryan  || Ryan@12345  || Admin
+* bob   || Bob@12345   || Admin
+* jim   || Jim@12345   || Technician
+* ryan  || Ryan@12345  || Technician
+* katie || katie@12345 || Technician
 
 # Popsicle API service
 # Data provider class library
