@@ -4,10 +4,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PopsicleFactory.DataProvider.Entities;
 using PopsicleFactory.DataProvider.Entities.Contexts;
+using PopsicleFactory.Infrastructure.Extensions;
 using PopsicleFactory.Infrastructure.Helpers;
 using PopsicleFactory.WebApi.Helpers;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -64,13 +69,14 @@ app.UseHttpsRedirection();
 
 //app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+app.UseCustomMiddlewares();
+
+app.MapCustomHealthChecks();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHealthChecks("/health");
-
-//Prep popsicle db
 PopsicleDb.PrepPopulation(app);
 
 app.Run();

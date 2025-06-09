@@ -7,9 +7,13 @@ using Microsoft.OpenApi.Models;
 using PopsicleFactory.AuthApi.Entities;
 using PopsicleFactory.AuthApi.Entities.Context;
 using PopsicleFactory.AuthApi.Services;
+using PopsicleFactory.Infrastructure.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -61,6 +65,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomMiddlewares();
+
+app.MapCustomHealthChecks();
 
 app.UseAuthorization();
 
