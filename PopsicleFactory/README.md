@@ -65,10 +65,17 @@ Welcome to **PopsicleFactory**, a modular and extensible RESTful Web API solutio
 
 ---
 
+## Getting Started
+
+### Prerequisites
+
+- .NET 8 SDK
+- Terminal
+
 ### Run the Project
 
-# Navigate to PopsicleFactory.AuthApi
+### Navigate to PopsicleFactory.AuthApi, open the terminal and run
 dotnet run --project PopsicleFactory.AuthApi
 
-# In another terminal, run the main Web API
+### Navigate to PopsicleFactory.WebApi, open the terminal and run
 dotnet run --project PopsicleFactory.WebApi
